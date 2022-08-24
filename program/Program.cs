@@ -1,24 +1,25 @@
 ﻿
-int sizeArray = InputInt("Введите размер массива:");
-string [] newArray = new string[sizeArray];
+int sizeNewArray = InputInt("Введите размер массива:");              //Задаем размер массива с консоли
+string [] newArray = new string[sizeNewArray];
 
-FillArray(newArray);
-string [] newArraySort = new string[SizeNewArraySort(newArray)];
-PrintArray(newArray);
+FillArray(newArray);                                                      // Заполнение массива с консоли по элементно
+string [] threeSymbolArray = new string[SizeThreeSymbolArray(newArray)];   //Задаем размер массива из строк длина которых меньше или равна 3. Делаем это через метод
+PrintArray(newArray);                                                       // Вывод исходного массива на консоль
 Console.Write(" -> ");
-PrintArray(SortArray(newArray, newArraySort));
+PrintArray(ThreeSymbolArray(newArray, threeSymbolArray));                       // Вывод  массива c длиной строк меньше или равной 3 на консоль
 
 
 
-int InputInt(string output)
+int InputInt(string output)   // Метод запроса размера исходного массива строк
 {
     Console.WriteLine(output);
     return Convert.ToInt32(Console.ReadLine());
 }
 
-void FillArray(string [] array)
+
+void FillArray(string [] array)   // Метод заполнение массива с терминала
 {
-    for(int i = 0; i < array.Length;i++)
+    for(int i = 0; i < array.Length; i++)
     {
         Console.WriteLine($"Введите {i+1} - й элемент массива:");
         array[i] = Console.ReadLine();
@@ -26,7 +27,7 @@ void FillArray(string [] array)
     }
 }
 
-void PrintArray(string [] array)
+void PrintArray(string [] array)  // Метод вывода массива в терминал
 {
     if(array.Length == 0)
     {
@@ -53,7 +54,7 @@ void PrintArray(string [] array)
     }
 }
 
-int SizeNewArraySort(string [] array)
+int SizeThreeSymbolArray(string [] array)   // Метод определения размера для нового массива строк с 3-мя или меньше символами
 {
     int count = 0;
     for(int i = 0; i < array.Length; i++)
@@ -66,7 +67,7 @@ int SizeNewArraySort(string [] array)
     return count;
 }
 
-string [] SortArray(string[] array1, string[] array2)
+string [] ThreeSymbolArray(string[] array1, string[] array2) // Метод заполнения массива строками из 3 и менее элементами
 {
 int index = 0;
 for( int i = 0; i < array1.Length; i++)
